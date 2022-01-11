@@ -17,14 +17,19 @@ const Form = ({ usuario, buscarUsuarios }) => {
   };
 
   const editar = (id) => {
-    api.put("editar/" + id).then(() => alert("Editado com sucesso!"));
+    api
+      .put("editar/" + id, {
+        nome: nome,
+        data_nascimento: dataNascimento,
+      })
+      .then(() => alert("Editado com sucesso!"));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (usuario) {
-      editar(editar.id);
+      editar(usuario.id);
     } else {
       let uploadFoto = null;
       if (foto) {
